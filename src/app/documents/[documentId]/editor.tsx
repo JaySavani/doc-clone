@@ -12,6 +12,9 @@ import Image from "@tiptap/extension-image";
 import ImageResize from "tiptap-extension-resize-image";
 import Underline from "@tiptap/extension-underline";
 import { useEditorStore } from "@/store/use-editor-store";
+import FontFamily from "@tiptap/extension-font-family";
+import TextStyle from '@tiptap/extension-text-style'
+
 
 const Editor = () => {
   const { setEditor } = useEditorStore();
@@ -56,6 +59,8 @@ const Editor = () => {
       Image,
       ImageResize,
       Underline,
+      FontFamily,
+      TextStyle,
       TaskItem.configure({
         nested: true,
       }),
