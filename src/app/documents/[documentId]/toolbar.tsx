@@ -24,6 +24,7 @@ import ImageButton from "@/components/toolbar/image-button";
 import { AlignButton } from "@/components/toolbar/align-button";
 import { ListButton } from "@/components/toolbar/list-button";
 import { FontSizeButton } from "@/components/toolbar/font-size-button";
+import { LineHeightButton } from "@/components/toolbar/line-height-button";
 
 export const Toolbar = () => {
   const { editor } = useEditorStore();
@@ -132,7 +133,8 @@ export const Toolbar = () => {
       <ImageButton />
       {/* Align */}
       <AlignButton />
-      {/* TODO: Line Height */}
+      {/* Line Height */}
+      <LineHeightButton />
       {/* List */}
       <ListButton />
       {sections[2].map((item) => {
