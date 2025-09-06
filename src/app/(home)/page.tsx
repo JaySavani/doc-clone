@@ -1,4 +1,5 @@
 import { Navbar } from "./navbar";
+import { TemplatesGallery } from "./templates-gallery";
 
 const Home = () => {
   return (
@@ -7,7 +8,7 @@ const Home = () => {
         <Navbar />
       </div>
       <div className="mt-16">
-        <h1>Welcome to the Home Page</h1>
+         <TemplatesGallery />
       </div>
     </div>
   );
