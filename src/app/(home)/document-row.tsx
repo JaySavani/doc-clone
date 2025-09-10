@@ -1,17 +1,23 @@
 import { TableCell, TableRow } from "@/components/ui/table";
 import { Doc } from "../../../convex/_generated/dataModel";
 import { SiGoogledocs } from "react-icons/si";
-import { Building2Icon, CircleUserIcon, MoreVerticalIcon } from "lucide-react";
+import { Building2Icon, CircleUserIcon } from "lucide-react";
 import { format } from "date-fns";
-import { Button } from "@/components/ui/button";
+import { DocumentMenu } from "./document-menu";
+import { useRouter } from "next/navigation";
 
 interface DocumentRowProps {
   document: Doc<"documents">;
 }
 
 export const DocumentRow = ({ document }: DocumentRowProps) => {
+  const router = useRouter();
+
   return (
-    <TableRow className="cursor-pointer ">
+    <TableRow
+      className="cursor-pointer"
+      onClick={() => router.push(`/documents/${document._id}`)}
+    >
       <TableCell className="w-[50px]">
         <SiGoogledocs className="size-6 fill-blue-500" />
       </TableCell>
@@ -28,9 +34,7 @@ export const DocumentRow = ({ document }: DocumentRowProps) => {
         {format(new Date(document._creationTime), "MMM d, yyyy")}
       </TableCell>
       <TableCell className="flex justify-end">
-        <Button variant="ghost" size="icon" className="rounded-full">
-          <MoreVerticalIcon className="size-4" />
-        </Button>
+        <DocumentMenu documentId={document._id} title={document.title} />
       </TableCell>
     </TableRow>
   );
