@@ -23,7 +23,6 @@ export const DocumentsTable = ({
   loadMore,
   status,
 }: DocumentsTableProps) => {
-  console.log(loadMore, status);
   return (
     <div className="max-w-screen-xl mx-auto px-16 py-6 flex flex-col gap-5">
       {documents === undefined ? (
@@ -59,16 +58,18 @@ export const DocumentsTable = ({
           )}
         </Table>
       )}
-      <div className="flex justify-center items-center">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => loadMore(5)}
-          disabled={status !== "CanLoadMore"}
-        >
-          {status === "CanLoadMore" ? "Load more" : "End of results"}
-        </Button>
-      </div>
+      {documents && documents.length !== 0 && (
+        <div className="flex justify-center items-center">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => loadMore(5)}
+            disabled={status !== "CanLoadMore"}
+          >
+            {status === "CanLoadMore" ? "Load more" : "End of results"}
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
