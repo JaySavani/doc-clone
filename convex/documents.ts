@@ -57,6 +57,31 @@ export const getById = query({
   },
 });
 
+export const getByIds = query({
+  args: { ids: v.array(v.id("documents")) },
+  handler: async (ctx, { ids }) => {
+    const documents=[];
+
+    for(const id of ids){
+      const document = await ctx.db.get(id);
+      if(document)
+      {
+        documents.push({
+          id: document._id,
+          name: document.title
+        })
+      }
+      else{
+        documents.push({
+          id: id,
+          name: "Deleted Document"
+        })
+      }
+    }
+    return documents;
+  },
+});
+
 export const create = mutation({
   args: {
     title: v.optional(v.string()),
