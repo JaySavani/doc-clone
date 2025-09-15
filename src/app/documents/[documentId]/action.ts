@@ -25,6 +25,7 @@ export async function getUser() {
       user.primaryEmailAddress?.emailAddress ??
       "Anonymous",
     avatar: user.imageUrl,
+    color: "",
   }));
   return user;
 }
