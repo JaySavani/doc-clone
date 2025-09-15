@@ -44,7 +44,7 @@ export async function POST(req: Request) {
     .split("")
     .reduce((acc, char) => acc + char.charCodeAt(0), 0);
   const hue = Math.abs(nameToNumber) % 360;
-  const color = `hsl(${hue}, 80% 60%)`;
+  const color = `hsl(${hue}, 80%, 60%)`;
 
   const session = liveblocks.prepareSession(user.id, {
     userInfo: {
