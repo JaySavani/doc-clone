@@ -31,9 +31,9 @@ export const RemoveDialog = ({ documentId, children }: RemoveDialogProps) => {
     e.stopPropagation();
     setIsRemoving(true);
     try {
+      router.push("/");
       await remove({ id: documentId });
       toast.success("Document removed successfully");
-      router.push("/");
     } catch (error) {
       console.error("Failed to remove document:", error);
       toast.error("Failed to remove document");
